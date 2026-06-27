@@ -4,6 +4,21 @@ _G["ProspectHelper"] = PH
 
 local L = addonTable.L
 
+local _GetSpellInfo = GetSpellInfo
+if not _GetSpellInfo and C_Spell and C_Spell.GetSpellInfo then
+    _GetSpellInfo = function(spellID)
+        if not spellID then return nil end
+        local info = C_Spell.GetSpellInfo(spellID)
+        if info then
+            return info.name, nil, info.iconID, info.castTime, info.minRange, info.maxRange, spellID
+        end
+    end
+elseif not _GetSpellInfo and C_Spell and C_Spell.GetSpellName then
+    _GetSpellInfo = function(spellID)
+        return C_Spell.GetSpellName(spellID)
+    end
+end
+
 -- SavedVariables
 ProspectHelperSettings = ProspectHelperSettings or { minimap = { hide = false }, showTooltip = true }
 
@@ -58,7 +73,6 @@ local expansionByID = {
     -- Mists of Pandaria
     [72092] = "Mists of Pandaria", [72093] = "Mists of Pandaria",
     [72094] = "Mists of Pandaria", [72103] = "Mists of Pandaria",
-    [72238] = "Mists of Pandaria",
 }
 
 -- Crear UI
@@ -201,7 +215,7 @@ function PH.UpdateUI()
 
                         if checked then
                             -- Crear macro y mostrar botón
-                            local spellName = GetSpellInfo(31252)
+                            local spellName = _GetSpellInfo(31252)
                             local macroText = "/use "..spellName.."\n/use "..data.name
 
                             if GetMacroIndexByName(macroName) == 0 then
