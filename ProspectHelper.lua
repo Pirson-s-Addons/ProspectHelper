@@ -19,6 +19,20 @@ elseif not _GetSpellInfo and C_Spell and C_Spell.GetSpellName then
     end
 end
 
+local function GetItemInfoSafe(itemID)
+    if C_Item and C_Item.GetItemInfo then
+        return C_Item.GetItemInfo(itemID)
+    end
+    return GetItemInfo(itemID)
+end
+
+local function GetNumBagSlots()
+    if C_Container and C_Container.GetNumBagSlots then
+        return C_Container.GetNumBagSlots()
+    end
+    return NUM_BAG_SLOTS or 4
+end
+
 -- SavedVariables
 ProspectHelperSettings = ProspectHelperSettings or { minimap = { hide = false }, showTooltip = true }
 
@@ -109,12 +123,12 @@ end
 -- Escanea inventario
 local function scanInventory()
     local found = {}
-    for bag = 0, NUM_BAG_SLOTS do
+    for bag = 0, GetNumBagSlots() do
         local slots = C_Container.GetContainerNumSlots(bag)
         for slot = 1, slots do
             local info = C_Container.GetContainerItemInfo(bag, slot)
             if info and info.itemID and prospectableByID[info.itemID] then
-                local name, link = GetItemInfo(info.itemID)
+                local name, link = GetItemInfoSafe(info.itemID)
                 if not name then
                     if info.hyperlink then
                         link = info.hyperlink
