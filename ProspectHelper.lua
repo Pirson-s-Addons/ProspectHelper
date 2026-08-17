@@ -198,6 +198,7 @@ function PH.UpdateUI()
 
                 -- Botón Prospectar
                 local btn = CreateFrame("Button", nil, ui.content, "SecureActionButtonTemplate")
+                btn:RegisterForClicks("AnyUp", "AnyDown")
                 btn:SetSize(24, 24)
                 btn:SetPoint("RIGHT", cb, "RIGHT", 200, 0)
                 btn:SetNormalTexture("Interface\\Icons\\inv_misc_gem_bloodgem_01")
