@@ -44,8 +44,6 @@ local prospectableByID = {
     [3858] = true, -- Mitrilo
     [10620] = true, -- Torio
     [11370] = true, -- Hierro Negro
-    [2776] = true, -- Oro
-    [2775] = true, -- Plata
     [11138] = true, -- Cobre de Rethban
 
     -- The Burning Crusade
@@ -75,7 +73,7 @@ local expansionByID = {
     -- Classic
     [2770] = "Classic", [2771] = "Classic", [2772] = "Classic",
     [3858] = "Classic", [10620] = "Classic", [11370] = "Classic",
-    [2776] = "Classic", [2775] = "Classic", [11138] = "Classic",
+    [11138] = "Classic",
     -- The Burning Crusade
     [23424] = "The Burning Crusade", [23425] = "The Burning Crusade",
     [23427] = "The Burning Crusade", [23426] = "The Burning Crusade",
@@ -162,7 +160,7 @@ function PH.UpdateUI()
     local found = scanInventory()
     local itemsByExpansion = {}
     for id, data in pairs(found) do
-        local exp = expansionByID[id] or L["Other"]
+        local exp = L[expansionByID[id] or "Other"]
         itemsByExpansion[exp] = itemsByExpansion[exp] or {}
         table.insert(itemsByExpansion[exp], {id = id, name = data.name, link = data.link, count = data.count})
     end

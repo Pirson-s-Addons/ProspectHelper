@@ -1,5 +1,5 @@
 ## Interface: 30400, 30401, 30402, 30403, 30404, 30405
-## Version: 1.08
+## Version: 1.09
 ## Author: Pirson
 
 ## IconTexture: Interface\AddOns\ProspectHelper\img\logo_ph
@@ -96,7 +96,7 @@
 ## Notes-thTH: |cFF33CCFFสำรวจแร่แบบกึ่งอัตโนมัติได้ด้วยการคลิกเพียงครั้งเดียว|r
 ## Notes-viVN: |cFF33CCFFCho phép thăm dò quặng bán tự động chỉ với một cú nhấp.|r
 
-## SavedVariables: ProspectHelperDB
+## SavedVariables: ProspectHelperSettings
 
 ## X-Curse-Project-ID: 1335779
 
