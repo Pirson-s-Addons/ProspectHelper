@@ -99,6 +99,7 @@
 ## SavedVariables: ProspectHelperSettings
 
 ## X-Curse-Project-ID: 1335779
+## X-Wago-ID: ANz7E264
 ## X-License: MIT
 ## X-Copyright: Copyright (c) 2025-2026 Pirson
 ## X-Website: https://github.com/Pirson-s-Addons/ProspectHelper
